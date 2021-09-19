@@ -1,16 +1,18 @@
 /**
- * @file Function.cpp
+ * @file FunctionImpl.cpp
  * @author rober
  */
 
+#include <utility>
 #include <cmath>
 #include <boost/math/special_functions/binomial.hpp>
 
-#include "Function.h"
+#include "FunctionImpl.h"
 
 //using std::beta;
 using boost::math::binomial_coefficient;
 using std::pow;
+using std::make_pair;
 
 /*
 //from
@@ -34,8 +36,14 @@ b_float binom(b_float n, b_float i) {
  * @param n The order of the derivative.
  * @return The nth derivative of this function at zero.
  */
-b_float Function::nthDerivAtZero(int n)
+b_float FunctionImpl::nthDerivAtZero(int n)
 {
+    // Check the cache, because this can be expensive
+    if(derivs.count(n) > 0)
+    {
+        return derivs.at(n);
+    }
+
     b_float total = 0;
     b_float half_n = n / 2.0;
     //int sign = 1;
@@ -49,6 +57,8 @@ b_float Function::nthDerivAtZero(int n)
     {
         total /= EPS;
     }
+
+    derivs.insert(make_pair(n, total));
 
     return total;
 }
