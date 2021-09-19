@@ -11,7 +11,7 @@
 /**
  * The composition of two functions.
  */
-class CompositionImpl : FunctionImpl{
+class CompositionImpl : public FunctionImpl{
 private:
     Function f1;
     Function f2;

@@ -12,7 +12,7 @@ set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
 find_package(Boost) # header only libraries must not be added here
 
-add_executable(Functions main.cpp consts.h FunctionImpl.cpp FunctionImpl.h PolynomialImpl.cpp PolynomialImpl.h Function.h SumImpl.h CompositionImpl.h)
+add_executable(Functions main.cpp consts.h FunctionImpl.cpp FunctionImpl.h PolynomialImpl.cpp PolynomialImpl.h Function.h SumImpl.h CompositionImpl.h Function.cpp)
 
 target_include_directories(Functions PUBLIC ${Boost_INCLUDE_DIRS})
 target_link_libraries(Functions ${Boost_LIBRARIES})
