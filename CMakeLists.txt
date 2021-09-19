@@ -3,4 +3,16 @@ project(Functions)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Functions main.cpp consts.h Function.cpp Function.h)
+#set(BOOST_ROOT "C:\\Boost") # either set it here or from the command line
+#set(BOOST_ROOT "C:\\Program Files\\boost\\boost_1_77_0\\boost")
+#set(BOOST_ROOT "C:\\Program Files\\boost\\boost_1_77_0")
+set(BOOST_ROOT "C:\\Program Files\\boost")
+set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME OFF)
+find_package(Boost) # header only libraries must not be added here
+
+add_executable(Functions main.cpp consts.h Function.cpp Function.h Polynomial.cpp Polynomial.h)
+
+target_include_directories(Functions PUBLIC ${Boost_INCLUDE_DIRS})
+target_link_libraries(Functions ${Boost_LIBRARIES})
