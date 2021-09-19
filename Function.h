@@ -21,20 +21,16 @@ private:
     std::shared_ptr<FunctionImpl> impl;
 public:
     Function(std::shared_ptr<FunctionImpl> f): impl(f) {}
-    b_float apply(b_float x) {return impl->apply(x);}
-    b_float nthDerivAtZero(int n) {return impl->nthDerivAtZero(n);}
+    b_float apply(b_float x) const {return impl->apply(x);}
+    b_float nthDerivAtZero(int n) const {return impl->nthDerivAtZero(n);}
 };
 
 Function operator+(Function f1, Function f2);
-/*{
-    std::shared_ptr<FunctionImpl> impl = std::shared_ptr<FunctionImpl>(new SumImpl(f1, f2));
-    return Function(impl);
-}*/
-
 Function operator*(Function f1, Function f2);
-/*{
-    std::shared_ptr<FunctionImpl> impl = std::shard_ptr<FunctionImpl>(new CompositionImpl(f1, f2));
-    return Function(impl);
-}*/
+
+// You can only left-multiply (to avoid ambiguity)
+Function operator*(b_float c, Function f);
+
+Function taylorTransform(Function f1, Function f2, int order);
 
 #endif //FUNCTIONS_FUNCTION_H

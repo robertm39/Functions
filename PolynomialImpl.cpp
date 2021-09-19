@@ -14,7 +14,7 @@ using boost::math::factorial;
  * @param x The input value.
  * @return The value of the polynomial at x.
  */
-b_float PolynomialImpl::apply(b_float x)
+b_float PolynomialImpl::apply(b_float x) const
 {
     b_float total = 0;
 
@@ -33,7 +33,7 @@ b_float PolynomialImpl::apply(b_float x)
  * @param n The order of the derivative.
  * @return The nth derivative of the polynomial at zero.
  */
-b_float PolynomialImpl::nthDerivAtZero(int n)
+b_float PolynomialImpl::nthDerivAtZero(int n) const
 {
     if(n < coeffs.size())
     {

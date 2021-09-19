@@ -5,6 +5,7 @@
 
 #include <utility>
 #include <cmath>
+#include <unordered_map>
 #include <boost/math/special_functions/binomial.hpp>
 
 #include "FunctionImpl.h"
@@ -14,21 +15,6 @@ using boost::math::binomial_coefficient;
 using std::pow;
 using std::make_pair;
 
-/*
-//from
-//https://stackoverflow.com/questions/67193273/is-there-a-built-in-function-to-calculate-ncr-in-c
-
-/**
- * The binomial coefficient (n i).
- * @param n The number of things to choose from.
- * @param i The number of things to choose.
- * @return The binomial coefficient (n i).
-
-b_float binom(b_float n, b_float i) {
-    return 1.0/((n+1)*beta(n-i+1,i+1));
-}
-*/
-
 /**
  * The nth derivative of this function at zero (used for Taylor series).
  * Prone to overflow when n is too high (~300).
@@ -36,7 +22,7 @@ b_float binom(b_float n, b_float i) {
  * @param n The order of the derivative.
  * @return The nth derivative of this function at zero.
  */
-b_float FunctionImpl::nthDerivAtZero(int n)
+b_float FunctionImpl::nthDerivAtZero(int n) const
 {
     // Check the cache, because this can be expensive
     if(derivs.count(n) > 0)

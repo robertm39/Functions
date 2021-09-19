@@ -28,8 +28,8 @@ public:
      */
     PolynomialImpl(std::vector<b_float> c): coeffs(c) {}
 
-    virtual b_float apply(b_float);
-    virtual b_float nthDerivAtZero(int);
+    virtual b_float apply(b_float) const;
+    virtual b_float nthDerivAtZero(int) const;
 };
 
 #endif //FUNCTIONS_POLYNOMIALIMPL_H

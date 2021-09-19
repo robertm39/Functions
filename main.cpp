@@ -6,6 +6,7 @@
 #include "FunctionImpl.h"
 #include "Function.h"
 #include "PolynomialImpl.h"
+#include "Functions.h"
 
 using std::cout;
 using std::endl;
@@ -16,9 +17,10 @@ using std::make_shared;
 
 int main()
 {
-    vector<b_float> coeffs{1, 3, 1};
-    shared_ptr<FunctionImpl> polyImpl = make_shared<PolynomialImpl>(coeffs);
-    Function poly = Function(polyImpl);
+    //vector<b_float> coeffs{1, 3, 1};
+    //shared_ptr<FunctionImpl> polyImpl = make_shared<PolynomialImpl>(coeffs);
+    //Function poly = Function(polyImpl);
+    Function poly = polynomial({1, 3, 1});
 
     std::cout.precision(std::numeric_limits<b_float>::digits10); // Show 50 decimal digit precision.
 

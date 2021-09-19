@@ -18,11 +18,11 @@
 class FunctionImpl {
 private:
     ///A cache to hold derivatives, because they can be expensive to compute.
-    std::unordered_map<int, b_float> derivs;
+    mutable std::unordered_map<int, b_float> derivs;
 public:
     virtual ~FunctionImpl() {}
-    virtual b_float apply(b_float) = 0;
-    virtual b_float nthDerivAtZero(int);
+    virtual b_float apply(b_float) const = 0;
+    virtual b_float nthDerivAtZero(int) const;
 };
 
 

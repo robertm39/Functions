@@ -17,7 +17,7 @@ private:
     Function f2;
 public:
     CompositionImpl(Function f1_, Function f2_): f1(f1_), f2(f2_) {}
-    virtual b_float apply(b_float x) {return f1.apply(f2.apply(x));}
+    virtual b_float apply(b_float x) const {return f1.apply(f2.apply(x));}
     // Use the numerical method for finding the nth derivative at zero
 };
 
